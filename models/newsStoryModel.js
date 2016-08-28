@@ -37,12 +37,13 @@ var Storage = function() {
       });
     },
 
-    getSummary: function(articleUrl) {
+    getSummary: function(articleUrl, callback) {
       var httprequest = new XMLHttpRequest();
       http.get(articleUrl, function(response) {
         article = (JSON.parse(response)).text;
-        singleArticle.render(JSON.parse(response).text);
+        callback(article);
       });
+
     }
 
   };
