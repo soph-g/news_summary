@@ -29,8 +29,6 @@ function getNewsID(location) {
 function showNews(newsID) {
   var url = storage.newsList()[newsID].webUrl;
   var articleUrl = "http://news-summary-api.herokuapp.com/aylien?apiRequestUrl=https://api.aylien.com/api/v1/summarize?url=" + url;
-
-  document.getElementById("story-view").innerHTML = storage.getSummary(articleUrl, function(article){
-    singleArticle.render(article);
-  } );
+  console.log(singleArticle.render(storage.getSummary(articleUrl)));
+  document.getElementById("story-view").innerHTML = singleArticle.render(storage.getSummary(articleUrl));
 }

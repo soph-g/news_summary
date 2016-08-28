@@ -17,12 +17,13 @@ var Storage = function() {
 
   var dataset = [];
 
+  var article = [];
+
   return {
 
     newsList: function() {
       return dataset;
     },
-
 
     getNews: function() {
       var httprequest = new XMLHttpRequest();
@@ -38,12 +39,10 @@ var Storage = function() {
     },
 
     getSummary: function(articleUrl, callback) {
-      var httprequest = new XMLHttpRequest();
       http.get(articleUrl, function(response) {
-        article = (JSON.parse(response)).text;
-        callback(article);
+        article = (JSON.parse(response).text);
       });
-
+      return article;
     }
 
   };
